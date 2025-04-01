@@ -1,0 +1,95 @@
+﻿@model IEnumerable<MvcCoreAzureStorage.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-controller="AzureTables"
+        asp-action="Create"
+    class="btn btn-success">Create New</a>
+</p>
+@if(Model != null){
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Edad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Salario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Empresa)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdCliente)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PartitionKey)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RowKey)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Timestamp)
+                </th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <a asp-controller="AzureTables"
+                        asp-action="Details"
+                        asp-route-partitionkey="@item.PartitionKey",
+                        asp-route-rowkey="@item.RowKey"
+                        class="btn btn-info">
+                        Details
+                        </a>
+                        <a asp-controller="AzureTables"
+                           asp-action="Delete"
+                           asp-route-partitionkey="@item.PartitionKey" ,
+                           asp-route-rowkey="@item.RowKey"
+                           class="btn btn-danger">
+                            Delete
+                        </a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Edad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Salario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Empresa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdCliente)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PartitionKey)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RowKey)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Timestamp)
+                    </td>
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+}
