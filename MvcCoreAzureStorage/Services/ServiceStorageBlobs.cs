@@ -70,5 +70,11 @@ namespace MvcCoreAzureStorage.Services
             await containerClient.UploadBlobAsync
                 (blobName, stream);
         }
+
+        public async Task ReadPrivateImg
+            ()
+        {
+
+        }
     }
 }
