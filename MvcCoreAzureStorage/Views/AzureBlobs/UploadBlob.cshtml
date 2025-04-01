@@ -1,0 +1,19 @@
+﻿<h1>Upload Blob @ViewData["CONTAINER"]</h1>
+
+<p>
+    <a asp-controller="AzureBlobs"
+    asp-action="Index">
+    Back to Containers
+    </a>
+</p>
+
+<form method="post" enctype="multipart/form-data">
+    <input type="hidden" name="containername"
+        value="@ViewData["CONTAINER"]"/>
+    <label>Seleccione fichero</label>
+    <input type="file" name="file" class="form-control"/>
+    <button class="btn btn-outline-primary">
+        Upload
+    </button>
+
+</form>
